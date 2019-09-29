@@ -1,0 +1,54 @@
+.header{
+    height: 80px;
+    background-color: greenyellow;
+    border-bottom: 1px solid grey;
+    font-family: sans-serif;
+}
+
+.header h3{
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.btn-shw-stnd{
+    height: 80px;
+    text-align: center;
+    padding-top: 25px;
+    font-weight: bold;
+}
+
+.btn-shw-stnd:hover{
+    height: 80px;
+    text-align: center;
+    padding-top: 25px;
+    font-weight: bold;
+    background-color: white;
+}
+
+.btn-shw-stnd a{
+    text-decoration: none;
+    color: red;
+}
+
+.btn-shw-stnd a:hover{
+    text-decoration: none;
+    color: green;
+}
+
+label{
+    margin-top: 10px;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+h4{
+    margin-left: 20px;
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+    display: none;
+}
+
+input[type=date]::-webkit-inner-spin-button, input[type=date]::-webkit-outer-spin-button {
+    display: none;
+}
