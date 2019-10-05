@@ -1,9 +1,3 @@
-<%-- 
-    Document   : data
-    Created on : 18 Sep, 2019, 1:16:48 AM
-    Author     : Anurag Choudhary
---%>
-
 <%@page import="java.util.Random"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.sql.*" %>
@@ -15,6 +9,15 @@
     </head>
     <body>
         <%
+            response.setHeader("Cache-Control", "no-cache");
+            response.setHeader("Cache-Control", "no-store");
+            response.setHeader("Pragma", "no-cache");
+            response.setDateHeader("Expires", 0);
+
+            if (session.getAttribute("username") == null) {
+                response.sendRedirect("../index.jsp");
+            }
+
             Random random = new Random();
             String fname = request.getParameter("fname");
             String lname = request.getParameter("lname");
@@ -40,7 +43,7 @@
 
                 String query = "Insert into studentinfo(`id`,`fname`,`lname`,`email`,`contact`,`dept`,`gender`,`dob`,`add1`,`add2`,`district`,`state`,`country`,`zipcode`, `regID`) values (NULL, '" + fname + "', '" + lname + "','" + email + "','" + contact + "','" + dept + "','" + gender + "','" + dob + "','" + add1 + "', '" + add2 + "', '" + district + "', '" + state + "', '" + country + "', '" + zipcode + "', '" + regID + "')";
                 statement.executeUpdate(query);
-                out.print("Data Added Successfully");
+                response.sendRedirect("../welcome.jsp");
             } catch (Exception e) {
                 out.print(e.getMessage());
             }

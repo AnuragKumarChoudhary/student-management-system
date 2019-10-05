@@ -26,6 +26,7 @@ body{
 
 label{
     font-weight: bold;
+    margin-top: 3px;
 }
 
 .error{

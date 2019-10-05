@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 25 Sep, 2019, 2:28:47 PM
-    Author     : Anurag Choudhary
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,7 +11,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
     <body>
-        <form action="login">
+        <form action="login" method="post">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-4"></div>

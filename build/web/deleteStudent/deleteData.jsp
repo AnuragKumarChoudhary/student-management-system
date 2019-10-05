@@ -14,16 +14,25 @@
     </head>
     <body>
         <%
+            response.setHeader("Cache-Control", "no-cache");
+            response.setHeader("Cache-Control", "no-store");
+            response.setHeader("Pragma", "no-cache");
+            response.setDateHeader("Expires", 0);
+
+            if (session.getAttribute("username") == null) {
+                response.sendRedirect("../index.jsp");
+            }
+
             String id = request.getParameter("id");
-            
+
             Connection connect = null;
             Statement statement = null;
-            
+
             try {
                 Class.forName("com.mysql.jdbc.Driver");
                 connect = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/studentDatabaseSystem", "root", "");
                 statement = connect.createStatement();
-                
+
                 String query = "Delete from studentinfo where id = " + id + ";";
                 statement.executeUpdate(query);
                 request.setAttribute("Success", "Student Data with ID = " + id + " is deleted");

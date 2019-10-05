@@ -1,9 +1,3 @@
-<%-- 
-    Document   : updateData
-    Created on : 19 Sep, 2019, 1:50:43 PM
-    Author     : Anurag Choudhary
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.sql.*" %>
 <!DOCTYPE html>
@@ -18,22 +12,34 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
     <body>
-        <div class="container-fluid header">
+        <%
+            response.setHeader("Cache-Control", "no-cache");
+            response.setHeader("Cache-Control", "no-store");
+            response.setHeader("Pragma", "no-cache");
+            response.setDateHeader("Expires", 0);
+
+            if (session.getAttribute("username") == null) {
+                response.sendRedirect("../index.jsp");
+            }
+        %>
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-5">
-                    <h3>Student Database Management</h3>
+                <div class="col-sm-4"></div>
+                <div class="col-sm-5"></div>
+                <div class="col-sm-1">
+                    <div class="about">
+                        <a href="/aboutUs/aboutUs.jsp">About Us</a>
+                    </div>
                 </div>
-                <div class="col-sm-3"></div>
-                <div class="col-sm-2"></div>
-                <div class="col-sm-2 btn-shw-stnd">
+                <div class="col-sm-2">
                     <div class="dropdown">
-                        <button class="btn btn-success dropdown-toggle text-dark bg-transparent" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Actions
+                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Hello ${username}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="http://localhost:8084/StudentDatabaseSystem/addStudent/add.jsp">Add Students</a>
-                            <a class="dropdown-item" href="http://localhost:8084/StudentDatabaseSystem/showStudent/studentData.jsp">Show Students</a>
-                            <a class="dropdown-item" href="http://localhost:8084/StudentDatabaseSystem/deleteStudent/delete.jsp">Delete Students</a>
+                            <form action="logout">
+                                <input type="submit" class="form-control logout" value="Log Out">
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -65,7 +71,7 @@
                 String query = "Update studentinfo SET fname='" + fname + "', lname='" + lname + "', email='" + email + "', contact='" + contact + "', dept='" + dept + "', gender='" + gender + "', dob='" + dob + "', add1='" + add1 + "', add2='" + add2 + "', district='" + district + "', state='" + state + "', country='" + country + "', zipcode='" + zipcode + "' where regID='" + regID + "';";
                 statement.executeUpdate(query);
                 request.setAttribute("Success", "Message: Data was Updated Successfully.");
-                    response.sendRedirect("../welcome.jsp");
+                response.sendRedirect("../welcome.jsp");
             } catch (Exception e) {
                 request.setAttribute("Error", "Error: " + e.getMessage());
             }
